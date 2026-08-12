@@ -1,0 +1,331 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: "Segoe UI", sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #ffd6e7,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at bottom right,
+            #d9c2ff,
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #fff0f6,
+            #f3e8ff
+        );
+
+    overflow: hidden;
+}
+
+main {
+    width: 100%;
+    text-align: center;
+
+    position: relative;
+    z-index: 2;
+}
+
+h1 {
+    color: #d63384;
+
+    font-size: 38px;
+
+    margin-bottom: 10px;
+}
+
+.hint {
+    color: #79556a;
+
+    margin-bottom: 35px;
+}
+
+
+/* พื้นที่ซอง */
+
+.envelope-area {
+    height: 280px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* ซอง */
+
+.envelope {
+    width: 320px;
+    height: 210px;
+
+    position: relative;
+
+    cursor: pointer;
+
+    filter:
+        drop-shadow(
+            0 20px 25px
+            rgba(100, 50, 100, 0.2)
+        );
+
+    transition: transform 0.4s;
+}
+
+.envelope:hover {
+    transform: translateY(-8px);
+}
+
+
+/* ด้านหลัง */
+
+.back {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    background: #e9a5c3;
+
+    border-radius: 8px;
+}
+
+
+/* จดหมาย */
+
+.letter {
+    position: absolute;
+
+    width: 90%;
+    height: 90%;
+
+    left: 5%;
+    bottom: 5%;
+
+    background: white;
+
+    border-radius: 5px;
+
+    z-index: 2;
+
+    transition:
+        transform 1s ease;
+
+    box-shadow:
+        0 5px 15px
+        rgba(0, 0, 0, 0.08);
+}
+
+.letter-content {
+    padding: 20px;
+
+    color: #68485a;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+.letter-content h2 {
+    color: #d63384;
+
+    margin-bottom: 10px;
+}
+
+.mini-flower {
+    font-size: 25px;
+}
+
+
+/* ด้านหน้าซอง */
+
+.front {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 65%;
+
+    background: #f3b3cd;
+
+    clip-path:
+        polygon(
+            0 0,
+            50% 65%,
+            100% 0,
+            100% 100%,
+            0 100%
+        );
+
+    z-index: 4;
+}
+
+
+/* ฝาซอง */
+
+.flap {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 60%;
+
+    background: #df91b5;
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            50% 100%
+        );
+
+    transform-origin: top;
+
+    transition:
+        transform 0.9s ease;
+
+    z-index: 5;
+}
+
+
+/* เมื่อเปิด */
+
+.envelope.open .flap {
+    transform: rotateX(180deg);
+
+    z-index: 1;
+}
+
+.envelope.open .letter {
+    transform:
+        translateY(-150px);
+
+    z-index: 3;
+}
+
+
+/* ปุ่ม */
+
+button {
+    border: none;
+
+    padding: 14px 28px;
+
+    margin: 8px;
+
+    border-radius: 50px;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e83e8c,
+            #9b59b6
+        );
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px
+        rgba(180, 70, 140, 0.25);
+
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 25px
+        rgba(180, 70, 140, 0.35);
+}
+
+#enterButton {
+    display: none;
+}
+
+
+/* ดาว */
+
+.sparkle {
+    position: fixed;
+
+    color: white;
+
+    font-size: 25px;
+
+    animation:
+        sparkle 2s infinite alternate;
+}
+
+.sparkle:nth-child(1) {
+    top: 15%;
+    left: 15%;
+}
+
+.sparkle:nth-child(2) {
+    top: 25%;
+    right: 15%;
+}
+
+.sparkle:nth-child(3) {
+    bottom: 20%;
+    left: 20%;
+}
+
+.sparkle:nth-child(4) {
+    bottom: 15%;
+    right: 20%;
+}
+
+@keyframes sparkle {
+
+    from {
+        opacity: 0.2;
+        transform: scale(0.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.3);
+    }
+}
+
+
+/* มือถือ */
+
+@media (max-width: 600px) {
+
+    h1 {
+        font-size: 30px;
+    }
+
+    .envelope {
+        width: 280px;
+        height: 185px;
+    }
+
+}
